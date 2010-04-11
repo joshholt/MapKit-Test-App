@@ -5,3 +5,11 @@ tail -n 100 -f /Users/joshholt/logs/sc-server/sc-app-4020-2010-04-10.log
 Server is running on port 4020
 You can tail the log with the following command:
 tail -n 100 -f /Users/joshholt/logs/sc-server/sc-app-4020-2010-04-10.log
+/Users/joshholt/.bin/abbot: line 19: 71577 Killed                  ruby1.9 $ABBOT/sc-server --port $1 >> $logfile 2>&1
+Server is running on port 4020
+You can tail the log with the following command:
+tail -n 100 -f /Users/joshholt/logs/sc-server/sc-app-4020-2010-04-10.log
+/Users/joshholt/.bin/abbot: line 19:  2241 Killed                  ruby1.9 $ABBOT/sc-server --port $1 >> $logfile 2>&1
+Server is running on port 4020
+You can tail the log with the following command:
+tail -n 100 -f /Users/joshholt/logs/sc-server/sc-app-4020-2010-04-10.log

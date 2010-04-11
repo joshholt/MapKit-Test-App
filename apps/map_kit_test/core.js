@@ -2,7 +2,7 @@
 // Project:   MapKitTest
 // Copyright: ©2010 My Company, Inc.
 // ==========================================================================
-/*globals MapKitTest */
+/*globals MapKitTest MapKit*/
 
 /** @namespace
 
@@ -13,7 +13,48 @@
 MapKitTest = SC.Application.create(
   /** @scope MapKitTest.prototype */ {
 
+  // ..........................................................
+  // NS PROPERTIES
+  // 
   NAMESPACE: 'MapKitTest',
   VERSION: '0.1.0',
-  store: SC.Store.create().from(SC.Record.fixtures)
+  store: SC.Store.create().from(SC.Record.fixtures),
+  currentAddress: null,
+  
+  // ..........................................................
+  // NS FUNCTION
+  // 
+  openAddPinPicker: function(){
+    SC.Logger.log("Opening Add Pin Picker");
+    var pane = MapKitTest.mainPage.get('addPinPicker');
+    var button = MapKitTest.mainPage.get('addPinButton');
+    if (pane) {
+      pane.popup(button.get('layer'),SC.PICKER_POINTER);
+    }
+    
+  },
+  
+  addPinForAddress: function(){
+    var address = this.get('currentAddress');
+    if (address) {
+      MapKit.addPinForAddress(address);
+    } else {
+      SC.Logger.warn("Could Not add pin b/c no address was provided");
+    }
+  },
+  
+  removePin: function(){
+    var selectedPin = MapKit.pinController.get('content');
+    var mapView = MapKitTest.mainPage.get('mapView');
+    if (selectedPin) {
+      selectedPin.destroy();
+      mapView.removePin(selectedPin);
+    } else {
+      SC.Logger.warn("Could Not delete a pin b/c one was not selected");
+    }
+  }
+  
+  // ..........................................................
+  // NS PRIVATE FUNCTIONS
+  // 
 });
