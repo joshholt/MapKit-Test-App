@@ -38,6 +38,7 @@ MapKitTest = SC.Object.create(
     var address = this.get('currentAddress');
     if (address) {
       MapKit.addPinForAddress(address);
+      this.invokeLater(this.moveToPin, 600);
     } else {
       SC.Logger.warn("Could Not add pin b/c no address was provided");
     }
