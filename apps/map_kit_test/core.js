@@ -52,6 +52,14 @@ MapKitTest = SC.Application.create(
     } else {
       SC.Logger.warn("Could Not delete a pin b/c one was not selected");
     }
+  },
+  
+  moveToPin: function() {
+    var mapView = MapKitTest.mainPage.get('mapView');
+    var selectedPin = MapKit.pinController.get('content');
+    if (mapView && selectedPin) {
+      MapKit.moveMapToPin(mapView, selectedPin);
+    }
   }
   
   // ..........................................................

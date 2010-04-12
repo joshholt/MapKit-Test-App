@@ -7,7 +7,6 @@
 MapKitTest.mainPage = SC.Page.design({
 
   mainPane: SC.MainPane.design({
-    defaultResponder: MapKitTest,
     childViews: 'pinList mapView controlBar'.w(),
     pinList: SC.ScrollView.design({
       hasHorizontalScroller: NO,
@@ -19,7 +18,9 @@ MapKitTest.mainPage = SC.Page.design({
         canReorderContent: YES,
         canDeleteContent: YES,
         allowDeselectAll: YES,
-        contentValueKey: 'name'
+        contentValueKey: 'name',
+        actOnSelect: YES,
+        action: 'MapKitTest.moveToPin'
       })
     }),
     controlBar: SC.View.design({
