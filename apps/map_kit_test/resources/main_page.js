@@ -15,12 +15,14 @@ MapKitTest.mainPage = SC.Page.design({
         contentBinding: 'MapKit.pinsController.arrangedObjects',
         selectionBinding: 'MapKit.pinsController.selection',
         rowHeight:24,
+        delegate: MapKitTest,
         canReorderContent: YES,
         canDeleteContent: YES,
         allowDeselectAll: YES,
         contentValueKey: 'name',
         actOnSelect: YES,
-        action: 'MapKitTest.moveToPin'
+        target: MapKitTest,
+        action: 'moveToPin'
       })
     }),
     controlBar: SC.View.design({

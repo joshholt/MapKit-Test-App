@@ -10,7 +10,7 @@
   
   @extends SC.Object
 */
-MapKitTest = SC.Application.create(
+MapKitTest = SC.Object.create(
   /** @scope MapKitTest.prototype */ {
 
   // ..........................................................
