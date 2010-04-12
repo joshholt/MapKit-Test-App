@@ -1,4 +1,5 @@
 .nohup
 tmp
 frameworks/map_kit
+frameworks/sproutcore
 nohup.out
