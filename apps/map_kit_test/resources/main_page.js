@@ -43,7 +43,8 @@ MapKitTest.mainPage = SC.Page.design({
       })
     }),
     mapView: MapKit.MapView.design({
-      layout: { top: 0, left: 176, bottom: 0, right: 0}
+      layout: { top: 0, left: 178, bottom: 0, right: 0},
+      delegate: MapKitTest
     })
     
   }),

@@ -10,7 +10,7 @@
   
   @extends SC.Object
 */
-MapKitTest = SC.Object.create(
+MapKitTest = SC.Object.create(MapKit.MapViewDelegate,
   /** @scope MapKitTest.prototype */ {
 
   // ..........................................................
@@ -36,8 +36,9 @@ MapKitTest = SC.Object.create(
   
   addPinForAddress: function(){
     var address = this.get('currentAddress');
-    if (address) {
-      MapKit.addPinForAddress(address);
+    var mapProxy = MapKit.proxyForMap('demo');
+    if (address && mapProxy) {
+      mapProxy.addPinForAddress(address);
       this.invokeLater(this.moveToPin, 600);
     } else {
       SC.Logger.warn("Could Not add pin b/c no address was provided");
@@ -46,20 +47,20 @@ MapKitTest = SC.Object.create(
   
   removePin: function(){
     var selectedPin = MapKit.pinController.get('content');
-    var mapView = MapKitTest.mainPage.get('mapView');
-    if (selectedPin) {
+    var mapProxy = MapKit.proxyForMap('demo');
+    if (selectedPin && mapProxy) {
       selectedPin.destroy();
-      mapView.removePin(selectedPin);
+      mapProxy.removePin(selectedPin);
     } else {
       SC.Logger.warn("Could Not delete a pin b/c one was not selected");
     }
   },
   
   moveToPin: function() {
-    var mapView = MapKitTest.mainPage.get('mapView');
     var selectedPin = MapKit.pinController.get('content');
-    if (mapView && selectedPin) {
-      MapKit.moveMapToPin(mapView, selectedPin);
+    var mapProxy = MapKit.proxyForMap('demo');
+    if (mapProxy && selectedPin) {
+      mapProxy.moveMapToPin(selectedPin);
     }
   }
   
